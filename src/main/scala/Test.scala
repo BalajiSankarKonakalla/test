@@ -11,7 +11,7 @@ class Test {
       if(isList(current)){
         if(b.nonEmpty){
           val newEle = b.head
-          if(isList(newEle)){
+          if(isList(newEle)){   // scenario "p-q" and "r-s"
             val initNum = newEle.split('-')
             val x = initNum.last.toInt
             val y = current.split('-')(0).toInt
@@ -20,7 +20,7 @@ class Test {
             }else {
               itrLst(a.drop(1), current :: b)
             }
-          } else {
+          } else {                 // scenario "p-q" and r
             val x: Int = newEle.toInt
             val y = current.split('-')(0).toInt
             if(x+1 == y){
@@ -30,13 +30,13 @@ class Test {
             }
           }
         } else {
-          itrLst(a.drop(1), a.head :: Nil)
+          itrLst(a.drop(1), a.head :: Nil)   // scenario "p-q" and ""
         }
 
       } else { // current is not list
         if(b.nonEmpty){
           val newEle = b.head
-          if(isList(newEle)){ // newEle is list
+          if(isList(newEle)){                  // scenario "p" and "r-s"
             val x = newEle.split('-').last.toInt
             val y = current.toInt
             if(x+1 == y){
@@ -44,7 +44,7 @@ class Test {
             }else{
               itrLst(a.drop(1), current :: b)
             }
-          }else {           // newEle is not list
+          }else {                               // scenario "p" and "r"
             val x = newEle.toInt
             val y = current.toInt
             if(x+1 == y){
@@ -54,7 +54,7 @@ class Test {
             }
           }
         }else{
-          itrLst(a.drop(1), a.head :: Nil)
+          itrLst(a.drop(1), a.head :: Nil)            // scenario "p" and ""
         }
       }
     }
